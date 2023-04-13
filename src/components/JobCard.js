@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function JobCard({ job }) {
   const navigate = useNavigate();
   return (
-    <Card>
+    <Card sx={{ height: 300 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {job.title}

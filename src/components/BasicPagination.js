@@ -12,6 +12,7 @@ export default function BasicPagination() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          backgroundColor: "white",
         }}
       />
     </Stack>

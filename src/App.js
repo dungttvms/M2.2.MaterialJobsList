@@ -3,9 +3,10 @@ import SearchAppBar from "./components/SearchAppBar";
 import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
 import { Routes, Route } from "react-router-dom";
-import BasicPagination from "./components/BasicPagination";
-import DarkTheme from "./components/DarkTheme";
+
+// import DarkTheme from "./components/DarkTheme";
 import NavigationBar from "./components/NavigationBar";
+import BasicPagination from "./components/BasicPagination";
 
 function App() {
   return (
@@ -13,11 +14,19 @@ function App() {
       <SearchAppBar />
       <NavigationBar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={
+            <div>
+              <HomePage />
+              <BasicPagination />
+            </div>
+          }
+        />
         <Route path="/job/:id" element={<DetailPage />} />
       </Routes>
-      <BasicPagination />
-      <DarkTheme />
+
+      {/* <DarkTheme /> */}
     </div>
   );
 }

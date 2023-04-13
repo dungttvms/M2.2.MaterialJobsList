@@ -1,8 +1,9 @@
 import React from "react";
 import jobs from "../jobs.json";
 import { useParams } from "react-router-dom";
-
+import Chip from "@mui/material/Chip";
 import { Box, Container, Typography } from "@mui/material";
+import Stack from "@mui/material/Stack";
 
 function DetailPage() {
   const params = useParams();
@@ -17,33 +18,26 @@ function DetailPage() {
     );
   return (
     <Container>
-      <Typography variant="h3" margin={3}>
+      <Typography
+        variant="h3"
+        margin={3}
+        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      >
         {job.title}
       </Typography>
       <br></br>
-      <Box marginTop={3} sx={{ display: "flex" }} variant="h4">
-        Skills: {job.skills.slice(0, 4).join(", ")}
+      <Box
+        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      >
+        <Typography variant="h6" sx={{ marginRight: "16px" }}>
+          Skills you need:
+        </Typography>
+        <Stack direction="column" spacing={2}>
+          {job.skills.slice(0, 4).map((skill, index) => (
+            <Chip key={index} label={skill} color="primary" />
+          ))}
+        </Stack>
       </Box>
-      <br></br>
-      <Typography variant="h4" margin={3}>
-        Salary Low: {job.salaryLow}
-      </Typography>
-      <br></br>
-      <Typography
-        variant="h5"
-        sx={{ fontWeight: "bold", fontStyle: "italic", margin: 1 }}
-      >
-        <span style={{ fontWeight: "bold" }}>Salary High:</span>{" "}
-        <span style={{ fontStyle: "italic" }}>{job.salaryHigh}</span>
-      </Typography>
-      <br></br>
-      <Typography
-        variant="h5"
-        sx={{ fontWeight: "bold", fontStyle: "italic", margin: 1 }}
-      >
-        <span style={{ fontWeight: "bold" }}>Remote:</span>{" "}
-        <span style={{ fontStyle: "italic" }}>{job.remote}</span>
-      </Typography>
     </Container>
   );
 }
